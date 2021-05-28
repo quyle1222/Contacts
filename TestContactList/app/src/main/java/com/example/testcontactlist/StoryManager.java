@@ -26,11 +26,12 @@ public class StoryManager {
     }
 
     public void fetchCallLog() {
+        storyModelsList = new ArrayList<>();
         String sortOder = CallLog.Calls.DATE + " DESC";
         String[] data = {
                 CallLog.Calls.NUMBER,
+                CallLog.Calls.DURATION,
                 CallLog.Calls.DATE,
-                CallLog.Calls.DURATION
         };
         Cursor story = mContext.getContentResolver().query(CallLog.Calls.CONTENT_URI, null, null, null, sortOder);
 
@@ -43,7 +44,7 @@ public class StoryManager {
             String totalStory = story.getString(totalIndex);
 
             String startFullDate = story.getString(startIndex);
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm dd:MM:yy");
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd:MM:yyyy");
             String startDate = simpleDateFormat.format(new Date(Long.parseLong(startFullDate)));
 
             SimpleDateFormat simpleTimeFormat = new SimpleDateFormat("HH:mm:ss");
@@ -54,11 +55,11 @@ public class StoryManager {
 
             String callDuration = DurationFormat(totalStory);
 
-            storyModelsList.add(new StoryModel(phoneNumber, callDuration, timeStart));
+            storyModelsList.add(new StoryModel(phoneNumber,timeStart,callDuration));
         }
         story.close();
     }
-    
+
     private String getFormatDateTime(String startTime, String input, String output) {
         String dateFormat = startTime;
         DateFormat inputFormat = new SimpleDateFormat(input, Locale.getDefault());
