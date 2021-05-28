@@ -43,7 +43,7 @@ public class Contact extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_contact, container, false);
-        mContactManager= new ContactManager(getContext());
+        mContactManager = new ContactManager(getContext());
         mContactAdapter = new ContactAdapter(getContext(),mContactManager.getContactModelsList());
         recyclerView = view.findViewById(R.id.recyclerviewContact);
         recyclerView.setHasFixedSize(true);

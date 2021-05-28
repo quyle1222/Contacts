@@ -15,8 +15,6 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
     @Override
     public Fragment createFragment(int position) {
         switch (position) {
-            case 0:
-                return new Contact();
             case 1:
                 return new Story();
             default:
