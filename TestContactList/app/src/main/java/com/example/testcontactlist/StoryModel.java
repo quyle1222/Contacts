@@ -1,22 +1,22 @@
 package com.example.testcontactlist;
 
 public class StoryModel {
-    private int number;
+    private String contactNumber;
     private String startTime;
     private String totalTime;
 
-    public StoryModel(int number, String startTime, String totalTime) {
-        this.number = number;
+    public StoryModel(String contactNumber, String startTime, String totalTime) {
+        this.contactNumber = contactNumber;
         this.startTime = startTime;
         this.totalTime = totalTime;
     }
 
-    public int getNumber() {
-        return number;
+    public String getContactNumber() {
+        return contactNumber;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
     }
 
     public String getStartTime() {

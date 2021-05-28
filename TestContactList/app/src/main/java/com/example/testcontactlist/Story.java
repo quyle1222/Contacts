@@ -6,6 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -13,18 +17,16 @@ import androidx.fragment.app.Fragment;
  * create an instance of this fragment.
  */
 public class Story extends Fragment {
-
+    RecyclerView recyclerView;
+    StoryManager mStoryManager;
+    StoryAdapter mStoryAdapter;
+    ArrayList<StoryModel> storyModelList;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
     private String mParam1;
     private String mParam2;
-
-    public Story() {
-        // Required empty public constructor
-    }
-
 
     public static Story newInstance(String param1, String param2) {
         Story fragment = new Story();
@@ -48,6 +50,14 @@ public class Story extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_story, container, false);
+        View view = inflater.inflate(R.layout.fragment_story, container, false);
+
+        mStoryManager = new StoryManager(getContext());
+        mStoryAdapter = new StoryAdapter(getContext(),mStoryManager.getStoryModelsList());
+        recyclerView = view.findViewById(R.id.recyclerviewStory);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        recyclerView.setAdapter(mStoryAdapter);
+        return view;
     }
 }
