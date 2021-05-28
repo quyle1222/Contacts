@@ -51,7 +51,7 @@ public class StoryManager {
             String startTime = simpleTimeFormat.format(Long.parseLong(startFullDate));
 
             String callMinuteTime = getFormatDateTime(startTime, "HH:mm:ss", "hh:mm:ss");
-            String timeStart = callMinuteTime + " " + startDate;
+            String timeStart = callMinuteTime + "    " + startDate;
 
             String callDuration = DurationFormat(totalStory);
 
