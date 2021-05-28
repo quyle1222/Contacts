@@ -39,7 +39,7 @@ public class StoryManager {
         int totalIndex = story.getColumnIndex(data[1]);
         int startIndex = story.getColumnIndex(data[2]);
         story.moveToFirst();
-        while (story.moveToNext()) {
+        do {
             String phoneNumber = story.getString(numberIndex);
             String totalStory = story.getString(totalIndex);
 
@@ -56,7 +56,7 @@ public class StoryManager {
             String callDuration = DurationFormat(totalStory);
 
             storyModelsList.add(new StoryModel(phoneNumber,timeStart,callDuration));
-        }
+        }while (story.moveToNext());
         story.close();
     }
 
